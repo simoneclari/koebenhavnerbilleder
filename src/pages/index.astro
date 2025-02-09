@@ -2,14 +2,250 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Button from '../components/Button.astro';
 import Link from '../components/Link.astro';
+import Anmeldelse from '../components/Anmeldelse.astro'
 import { Image } from 'astro:assets';
-import thumbsup from "../assets/images/thumbsup.png";
+import sten_simons from "../assets/images/sten_simons.jpg";
+import koebenhavnerbilleder_oppefra from "../assets/images/kobenhavnerbilleder_oppefra.jpg";
+import koebenhavnerbilleder_aaben_venstre from "../assets/images/kobenhavnerbilleder_aaben_venstre.jpg";
+import kobenhavnerbilleder_sten_simons from "../assets/images/kobenhavnerbilleder_sten_simons.jpg";
+
+import musik2 from "../assets/images/musik2.jpg";
+import musik3 from "../assets/images/musik3.jpg";
+import musik4 from "../assets/images/musik4.jpg";
+const images = Object.values(
+  import.meta.glob("/src/assets/images/galleri/*", { eager: true })
+).map(file => file.default);
 ---
 <MainLayout title="Titel">
-	<article>
-		<h1>Index overskrift</h1>
-		<Button>Klik!</Button>
-		<p>Link til <Link href="https://www.kea.dk" target="_blank">En anden side</Link></p>
-		<Image src={thumbsup} alt=""></Image>
-	</article>
+		<section class="border-indigo-600 grid md:grid-cols-2 border-2 lg:mt-32">		
+			<div class="overflow-hidden">
+				<Image src={koebenhavnerbilleder_oppefra} alt="Københavnerbilleder oppefra" class="hover:scale-125 duration-300 delay-100 overflow"/>
+			</div>
+			<div class="p-8 grid content-center ">					
+				<p class="text-2xl text-indigo-600 font-bold">Københavnerbilleder - en guide til hipster foto</p>
+				<p class="mb-8 text-lg italic">af Sten Simons</p>
+				<form class="" action="/action_page.php">
+					<label for="email" class="block">Email:</label>
+					<input type="email" id="email" name="email" placeholder="johnnymadsen@gmail.com">
+					<button class="ml-4 p-2 px-8 text-s cursor-pointer m-1 shadow-lg shadow-indigo-500/50 bg-indigo-500 text-white hover:bg-indigo-700 focus:bg-indigo-400 transition delay-150 duration-200 ease-in-out rounded-full">Hent prøvekapitel</button>
+				  </form>
+				<p class="text-xs">*Jeg accepterer at modtage prøvekapitlet og modtage markedsføring om bogen ved at downloade prøvekapitlet. </p>
+			</div>
+		</section>
+
+		<section id="kurset" class="mt-32 grid lg:grid-cols-2 prose mx-auto gap-4">
+			<article  >
+				<p>Titel: Københavnerbilleder - en guide til hipster foto
+					Forfatter: Sten Simons
+					Antal sider: 344
+					Forlag: Mellem Linjerne
+					ISBN: 987-6-987654-32-1
+					Pris: 399.-
+					.</p>
+			</article>
+			<article >
+				<p>Københavnerbilleder er de danske streetfotografers bibel: Det er en fusion mellem et kunstværk og en lærebog. Bogen gennemgår alle væsentlige aspekter af streetfotografering fra grundlæggende teknik til kreative eksperimenter. Alt sammen krydret med masser af inspirerende fotos. God læselyst!	 </p>
+			</article>
+		</section>
+		
+		<section class="mt-32 grid lg:grid-cols-3 mx-auto gap-4 items-center ">
+			<div><Image src={koebenhavnerbilleder_aaben_venstre} format="webp" alt="foto" class="flip-scale-up-hor" /></div>
+			<div><Image src={kobenhavnerbilleder_sten_simons} format="webp" alt="foto" class="animate__animated animate__flipInY" /></div>
+			<div><Image src={koebenhavnerbilleder_oppefra} format="webp" alt="foto" class="mitelement" /></div>
+		</section>
+
+		<section class="mt-32" id="bogensindhold">
+			<h2 class="text-4xl font-bold mb-8 text-indigo-600">Kapitlerne</h2>
+			<div class="grid grid-cols-1 lg:grid-cols-2 mx-auto mt-4 gap-8">
+				<article class="prose">
+					<h3 class="text-xl">Kapitel 1 - Intro til street foto</h3>
+					<p>Hvad er street foto? Det handler i bund og grund om at skyde byens liv og byens geometri (urban geometry). I dette kapitel får du en grundig intro til hvad street foto er og et overblik over nogen af de kendte street-fotografer. Alt krydret med en masse gode eksempler på street fotos.
+					</p>
+				</article>
+				<article class="prose">
+					<h3 class="text-xl">Kapitel 2 - Om at skyde street</h3>
+					<p>Vil du skyde street? Så er der ikke nogen vej udenom: Du skal ud på gaderne og prøve det! I dette kapitel får du en teknisk indføring i hvordan du bedst skyder street. Uanset om du er begynder eller professionel, er der mange gode tekniske tips og tricks til street-skyderiet.</p>
+				</article>
+				<article class="prose">
+					<h3 class="text-xl">Kapitel 3 - Om at finde det rette motiv</h3>
+					<p>Indimellem er man heldig, andre gange kommer man hjem helt uden gode motiver. Med et par tips og tricks til at finde de rette motiver, stiger chancen gevaldigt for at fange de gode motiver.</p>
+				</article>
+				<article class="prose">
+					<h3 class="text-xl">Kapitel 4 - Digital street foto</h3>
+					<p>De fleste af os skyder oftest digitalt fordi det er billigere og nemmere. Og nogen teknikker og fremgangsmåder egner sig kun til digital street foto. I dette kapitel får du en række tips og tricks til digital street-foto.</p>
+				</article>	
+				<article class="prose">
+					<h3 class="text-xl">Kapitel 5 - Analog street foto</h3>
+					<p>Analog er sejt fordi det er mere “ægte,” dyrere og mere besværligt end digital. Det signalerer entusiasme. Nogle teknikker og fremgangsmåder egner sig bedst til analog street foto. I dette kapitel får du en række tips og tricks til analog street-foto. </p>
+				</article>
+				<article class="prose">
+					<h3 class="text-xl">Kapitel 6 - Om at skyde sort/hvid</h3>
+					<p>Alle street-fotografer skyder sort/hvid nu og da. Nogen altid. Hvorfor? Hvad er der specielt ved sort/hvid fotografering, og hvad adskiller sort/hvid fra farvefotografering? Her får du en række tips og tricks til sort/hvid fotografering.</p>
+				</article>
+				<article class="prose">
+					<h3 class="text-xl">Kapitel 7 - Kreative teknikker</h3>
+					<p>Dobbelteksponeringer, ICM (intentional camera moves), smadrede objektiver, gamle filmruller og alle mulige andre, spændende kreative teknikker kan løfte dine fotografier fra at være kedelige dokumentationer af hverdagen til at blive vilde kunststykker. Så dyk ned i dette kapitel om eksperimenterende teknikker!</p>
+				</article>				
+				<article class="prose">
+					<h3 class="text-xl">Kapitel 8 - Kom helt tæt på!</h3>
+					<p>Street foto handler om at fotografere livet på gaden - men tør du at gå helt tæt på fremmede mennesker og knipse løs? Du kan lige så godt øve dig, for det er det der vil gøre dig til en bedre street-fotograf…</p>
+				</article>	
+			</div>
+		</section>
+
+
+		<section class="mt-32">
+			<h2 class="text-4xl font-bold mb-8 text-indigo-600">Pressen siger</h2>
+			<div class="grid grid-cols-1 lg:grid-cols-3 mx-auto gap-4">
+				<Anmeldelse titel="Godt!" stjerner="5" forfatter="Hanne Hovgaard, Berlingeren" anmeldelseid="a1">Københavnerbilleder er en grundig introduktion til at skyde billeder med retro-kant. Hvad enten du er har arbejdet med foto siden 135-filmen kom på markedet, du kun har skudt digitalt eller er helt nybegynder, er der masser af tips og tricks i bogen.</Anmeldelse>
+				
+				<Anmeldelse titel="Jeg gik tilfreds hjem!" stjerner="4" forfatter="Kim Kloggaard, Fotojournalen.dk" anmeldelseid="a2">Teksten er underholdende, og billederne er sku’ flotte. Hvad mere skal man sige om en fotobog?</Anmeldelse>
+
+				<Anmeldelse titel="Sten Simons kan det der." stjerner="6" forfatter="Volmer Hansen, Lukkertiden.dk" anmeldelseid="a3">- og han bliver bedre og bedre. Stens tredje fotobog er klart den bedste - her er han for alvor i sit rette element, meget bedre end “studiefotografering som begyndere.” Tillykke - godt arbejde.</Anmeldelse>
+			</div>
+		</section>
+
+
+		<section id="inspiration" class="my-32">
+			<h2 class="text-4xl font-bold">Billeder fra bogen</h2>
+			<div class="columns-2 lg:columns-4">
+			{
+				images.map(({ src }) => (
+				<div class="">
+					<img
+						src={src}
+						class="mb-4"
+						alt=""
+						loading="lazy"
+					/>
+				</div>
+				))
+			}
+			</div>
+		</section>
+
+		<section id="forfatteren" class="grid lg:grid-cols-2 mt-32 max-w-3xl mx-auto gap-6"> 
+			<div>
+				<Image src={sten_simons} alt="Sten Simons" class="" />
+			</div>
+			<article class="prose">
+				<h2 class="text-4xl text-indigo-600">Forfatteren</h2>
+				<p>Sten Simons har en lang foto-karriere bag sig. Det hele startede i 00’erne, da han gik rundt i Pisserenden for at fotografere ungdommens forfald. Det ledte til en række udstillinger, og blev senere til hans først fotobog “Ungdomsdruk - pinlige billeder fra nattelivet.”
+					Derefter tog karrieren fart: Han blev fotojournalist og dokumenterede en masse dagligdagsstof fra Amager på dagbladet “Amagerkaneren.” Sideløbende begyndte han at undervise i foto, og har skrevet et utal af bøger, herunder bestsellerne Scener fra S-toget, Brun mad - en visuel odysse, og lærebogen Fotografering for evnesvage.
+					</p>		
+			</article>
+		</section>
+
+		<section  id="koebnu" class="max-w-xl mx-auto mt-32 p-4">
+			<h2 class="text-4xl font-bold pb-8 text-indigo-600">Køb Københavnerbilleder nu!</h2>
+			<form class="space-y-4 grid grid-cols-1 gap-6 text-indigo-600 border-indigo-600">
+	
+				<div class="">				
+					<label for="antal">Antal:</label>
+					<input class=" border-indigo-600" type="number" id="antal" name="antal" placeholder="0"><br>
+				</div>
+	
+				<div class="">
+					<input class=" border-indigo-600" type="radio" id="postnord" name="levering" value="postnord">
+					<label for="postnord">PostNord</label>
+					<input class=" border-indigo-600" type="radio" id="afhent" name="levering" value="afhent">
+					<label for="afhent">Afhent selv</label><br>
+					
+				</div>
+			
+				<div class="grid gap-3">
+					<label for="navn">Navn:</label>
+					<input class=" border-indigo-600" type="text" id="navn" name="navn" placeholder="Peter Beier">
+				</div>
+	
+				<div class="grid gap-3">
+					<label for="adresse">Adresse:</label>
+					<input class="border-indigo-600" type="text" id="adresse" name="adresse" placeholder="Chokoladevænget 22">
+				</div>
+
+				<div class="grid gap-3">
+					<label for="email">Email:</label>
+					<input class="border-indigo-600" type="text" id="email" name="email" placeholder="peterbeier@gmail.com">
+				</div>
+	
+				<div class="grid gap-3 grid-cols-6">
+					<label for="postnummer" class="col-span-6">Postnummer & by:</label>
+					<input type="text" id="postnummer" name="postnummer" class="border-indigo-600 col-span-2" placeholder="8929">
+					<input type="text" id="bynavn" name="bynavn" disabled class="col-span-4 border-indigo-600" placeholder="Lakridsby">
+				</div>
+	
+				<div class="grid gap-3">
+					<label for="telefon">Telefon:</label>
+					<input class="border-indigo-600" type="tel" id="telefon" name="telefon" placeholder="12345678">
+				</div>
+	
+				<div class="">
+					<input class="border-indigo-600" type="checkbox" id="nyhedsbrev" name="nyhedsbrev">
+					<label for="nyhedsbrev">Ja tak til nyhedsbreve og tilbud</label>
+				</div>
+	
+				<div class="flex justify-end">
+					<Button variant="primary" size="medium">Fortsæt</Button>
+				</div>
+			</form>
+		</section>
+
+
 </MainLayout>
+
+<style>
+
+.minegenclass:hover{
+	animation: headShake;animation-duration: 1s;
+    }
+	.bootyup:hover{animation: backInUp;animation-duration: 1s;    }
+
+	.flip-scale-up-hor:hover {
+	-webkit-animation: flip-scale-up-hor 0.5s linear both;
+	        animation: flip-scale-up-hor 0.5s linear both;
+
+	
+}
+
+ @-webkit-keyframes flip-scale-up-hor {
+  0% {
+    -webkit-transform: scale(1) rotateX(0);
+            transform: scale(1) rotateX(0);
+  }
+  50% {
+    -webkit-transform: scale(2.5) rotateX(-90deg);
+            transform: scale(2.5) rotateX(-90deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateX(-180deg);
+            transform: scale(1) rotateX(-180deg);
+  }
+}
+@keyframes flip-scale-up-hor {
+  0% {
+    -webkit-transform: scale(1) rotateX(0);
+            transform: scale(1) rotateX(0);
+  }
+  50% {
+    -webkit-transform: scale(2.5) rotateX(-90deg);
+            transform: scale(2.5) rotateX(-90deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateX(-180deg);
+            transform: scale(1) rotateX(-180deg);
+  }
+}
+
+</style>
+
+<script>
+	import {inView} from "motion";
+
+	const bogfadein = document.querySelector(".mitelement");
+
+	inView(bogfadein, () => {
+		bogfadein.classList.add("animate__animated", "animate__bounceInDown")
+	}
+	)
+
+</script>
